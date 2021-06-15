@@ -16,6 +16,7 @@ podTemplate(containers: [
 
                 if ( GIT_TAG ){
                     dir('time-service') {
+
                       sh "docker build --network host -t ishais/time-service:${GIT_TAG} ."
                       withCredentials([usernamePassword(credentialsId: 'docker-hub-cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh "docker login -u='${USERNAME}' -p='${PASSWORD}'"
