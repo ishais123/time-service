@@ -7,7 +7,7 @@ podTemplate(containers: [
     node(POD_LABEL) {
         git branch: 'main',
         credentialsId: 'jenkins-user-github',
-        url: 'https://github.com/ishais123/moon.git'
+        url: 'https://github.com/ishais123/time-service.git'
         container('build') {
             stage('build') {
                 sh "ls -la"
