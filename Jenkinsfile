@@ -16,22 +16,18 @@ podTemplate(containers: [
                 GIT_TAG = sh(returnStdout: true, script: "git tag --contains | head -1").trim()
 
                 if ( GIT_TAG ){
-                    dir('time-service') {
                       sh "docker build --network host -t ishais/time-service:${GIT_TAG} ."
                       withCredentials([usernamePassword(credentialsId: 'docker-hub-cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh "docker login -u='${USERNAME}' -p='${PASSWORD}'"
                         sh "docker push ishais/time-service:${GIT_TAG}"
                       }
-                    }
                 }
                 else{
-                    dir('time-service') {
                       sh "docker build --network host -t ishais/time-service:latest ."
                       withCredentials([usernamePassword(credentialsId: 'docker-hub-cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh "docker login -u='${USERNAME}' -p='${PASSWORD}'"
                         sh "docker push ishais/time-service:latest"
                       }
-                    }
                 }
                 sh "docker images"
             }
