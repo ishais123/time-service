@@ -34,6 +34,10 @@ podTemplate(containers: [
         }
         container('deploy') {
             stage('deploy') {
+                sh "ls -la"
+                dir('deployment/moon-chart') {
+                    sh "helm install moon-release . -f values.yaml"
+                }
                 sh "kubectl get nodes"
             }
         }
