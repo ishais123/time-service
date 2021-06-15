@@ -35,8 +35,9 @@ podTemplate(containers: [
         container('deploy') {
             stage('deploy') {
                 sh "ls -la"
+                sh "kubectl create ns moon"
                 dir('deployment/moon-chart') {
-                    sh "helm install moon-release . -f values.yaml"
+                    sh "helm install moon-release . -f values.yaml -n moon"
                 }
                 sh "kubectl get nodes"
             }
