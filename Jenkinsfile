@@ -37,8 +37,7 @@ podTemplate(containers: [
                 }
                 sh "kubectl get nodes"
             }
-        }
-        stage('test') {
+            stage('test') {
                 // Stage Variables
                 NAMESPACE = 'moon'
                 SVC_NAME = 'moon-release-time'
