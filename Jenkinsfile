@@ -38,5 +38,15 @@ podTemplate(containers: [
                 sh "kubectl get nodes"
             }
         }
+        stage('test') {
+                // Stage Variables
+                NAMESPACE = 'moon'
+                SVC_NAME = 'moon-release-time'
+                SVC_HOSTNAME = sh(returnStdout: true, script: "kubectl get services -n ${NAMESPACE} ${SVC_NAME} --output jsonpath='{.status.loadBalancer.ingress[0].hostname}'").trim()
+                SVC_PORT = '8082'
+                SVC_ROUTE = 'api/v1/time'
+                sh "curl ${SVC_HOSTNAME}:${SVC_PORT}/${SVC_ROUTE}"
+            }
+        }
     }
   }
