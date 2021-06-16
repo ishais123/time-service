@@ -11,4 +11,4 @@ COPY . .
 
 EXPOSE 8082
 
-CMD [ "python", "./time-service.py" ]
+CMD [ "python", "./app.py" ]
