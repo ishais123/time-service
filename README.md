@@ -78,7 +78,7 @@ git pull origin main
 git tag <tag value>
 git push -f origin main --tags <tag value>
 
-// It will trigger the Pipeline using webhook
+// It will trigger the Pipeline using webhook.
 // if you use different jenkins server, you must change the webhook URL to your jenkins server URL
 
 ```
