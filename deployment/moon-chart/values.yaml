@@ -6,7 +6,7 @@ facts:
   image:
     repository: ishais/cat-facts-service
     pullPolicy: IfNotPresent
-    tag: "test"
+    tag: "latest"
 
   imagePullSecrets: []
   nameOverride: ""
@@ -29,10 +29,10 @@ time:
   image:
     repository: ishais/time-service
     pullPolicy: IfNotPresent
-    tag: "test"
+    tag: "latest"
 
   imagePullSecrets: []
-  nameOverride: "time"
+  nameOverride: ""
   fullnameOverride: ""
   autoscaling:
     enabled: false
